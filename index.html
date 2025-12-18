@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>💖 Una pregunta importante</title>
+
+    <!-- MUY IMPORTANTE PARA CELULAR -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fbd3e9, #fce4ec);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            padding: 20px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 6vw, 3rem);
+            margin-bottom: 25px;
+            color: #b0006d;
+        }
+
+        button {
+            font-size: 1.4rem;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        #yes {
+            background-color: #ff5fa2;
+            color: white;
+        }
+
+        #no {
+            background-color: #ccc;
+            position: absolute;
+        }
+
+        #result {
+            display: none;
+            margin-top: 25px;
+            animation: fadeIn 1.2s ease;
+        }
+
+        iframe {
+            width: 100%;
+            max-width: 320px;
+            height: 380px;
+            border-radius: 12px;
+            margin-top: 15px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>¿Quieres ser mi novia? 💕</h1>
+
+    <button id="yes">Sí 💖</button>
+    <button id="no">No 😢</button>
+
+    <div id="result">
+        <h2>Te quiero muchos muchotes, princesita 💜</h2>
+        <p>Estas canciones son las que me hacen pensar en ti cuando las escucho 🎶</p>
+
+        <iframe 
+            src="https://open.spotify.com/embed/playlist/4FP5Bd7QZfa5amo1jHEAKT"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+        </iframe>
+    </div>
+</div>
+
+<script>
+    const noBtn = document.getElementById("no");
+    const yesBtn = document.getElementById("yes");
+    const result = document.getElementById("result");
+
+    function moveNoButton() {
+        const padding = 20;
+        const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+        const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+
+        const x = Math.random() * maxX;
+        const y = Math.random() * maxY;
+
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+    }
+
+    // Para computadora
+    noBtn.addEventListener("mouseover", moveNoButton);
+
+    // Para celular (MUY IMPORTANTE)
+    noBtn.addEventListener("touchstart", moveNoButton);
+
+    yesBtn.addEventListener("click", () => {
+        result.style.display = "block";
+        yesBtn.style.display = "none";
+        noBtn.style.display = "none";
+    });
+</script>
+
+</body>
+</html>
